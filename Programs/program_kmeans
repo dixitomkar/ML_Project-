@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+
+from sklearn.neighbors import NearestNeighbors
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt   
+movies = pd.read_csv('/home/dixitomkar/Downloads/Data_set_normalised.csv', sep=',',
+                     encoding='latin-1')
+ 
+from sklearn.cluster import KMeans
+import numpy as np
+from time import time
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+from sklearn import metrics
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_digits
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+ 
+print("Started")
+
+
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+#print("Started")
+#total_distances = []
+#array_i=[]
+#for i in range(1,400,20):
+#    print("Kmeans running for i = ",i)
+#    kmeans1 = KMeans(n_clusters=5,init='random', n_init=10, max_iter=i).fit(movies)
+#    array_i.append(i)
+#    total_distances.append(kmeans1.inertia_)
+#plot(array_i,total_distances)
+#print("Done")
+
+
+print("Started")
+for_diff_k = []
+array_clusters=[]
+all_cluster_labels=[]
+for i in range(5,15,2):
+    print("Kmeans running for clusters = ",i)
+    kmeans1 = KMeans(n_clusters=i,init='k-means++', n_init=10, max_iter=21).fit(movies)
+    for_diff_k.append(i)
+    array_clusters.append(kmeans1.inertia_)
+    all_cluster_labels.append(kmeans1.labels_)
+plt.plot(for_diff_k,array_clusters)
+print("Done")
+ 
